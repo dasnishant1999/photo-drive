@@ -1,0 +1,11 @@
+for backend will be using firebase in which
+we will use firestore and storage to store images.
+
+we will use framer motion for the animations
+
+1. create react app
+2. set up firebase with firestore and storage services active
+3. creating forms for uploading photo
+4. create custom hooks(use storage).
+5. in useStorage do task of uploading image and getting its progress,url and error.
+6. use this custom hook in a component(progressbar)
