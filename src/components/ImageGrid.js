@@ -16,6 +16,7 @@ function ImageGrid({ setselectedImage }) {
             onClick={() => setselectedImage(doc.url)}
             whileHover={{ opacity: 1 }}
             layout
+            
           >
             <motion.img
               src={doc.url}

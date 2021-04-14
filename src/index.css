@@ -1,15 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap");
 
 :root {
-  --primary: #efb6b2;
-  --secondary: #4e4e4e;
+  --primary: #A78BFA;
+  --secondary: #C4B5FD;
+  
+  --header: #4e4e4e;
   --error: #ff4a4a;
 }
 
 /* base styles & title */
 body {
   font-family: "Noto Serif";
-  color: var(--secondary);
+  color: var(--header);
 }
 
 .title h1 {
@@ -38,7 +40,7 @@ body {
   text-align: center;
   width: 150px;
   height: 30px;
-  border: 2px solid var(--primary);
+  border: 2px solid var(--secondary);
   border-radius: 0.4rem;
   margin: 1rem auto;
   line-height: 30px;
@@ -49,14 +51,14 @@ body {
 }
 
 .upload-file-label:hover {
-  background-color: var(--primary);
+  background-color: var(--secondary);
   color: white;
 }
 
 /* progress bar styles */
 .progress-bar {
   height: 5px;
-  background-color: var(--primary);
+  background-color: var(--secondary);
 }
 
 /* image grid styles */
@@ -104,4 +106,5 @@ body {
   object-fit: contain;
   margin: 3rem auto;
   border: 2px solid white;
+  box-shadow: 5px 7px 10px rgba(0, 0, 0, 0.5);
 }
