@@ -7,10 +7,10 @@ function deleteHandler(docId) {
 function favouriteHandler({ url, id, createdAt, isFav }) {
   if (!isFav) {
     db.collection("images").doc(id).update({ isFav: !isFav });
-    db.collection("favourites").doc(id).set({ url, createdAt });
+    // db.collection("favourites").doc(id).set({ url, createdAt });
   } else {
     db.collection("images").doc(id).update({ isFav: !isFav });
-    db.collection("favourites").doc(id).delete();
+    // db.collection("favourites").doc(id).delete();
   }
 }
 

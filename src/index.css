@@ -1,11 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Train+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Train+One&display=swap');
+
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap");
 
 :root {
-  --primary: #A78BFA;
-  --secondary: #C4B5FD;
-  
+  --primary: #a78bfa;
+  --secondary: #c4b5fd;
+
   --header: #4e4e4e;
   --error: #ff4a4a;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 /* base styles & title */
@@ -18,14 +25,21 @@ body {
   color: var(--primary);
   font-size: 2.2rem;
   letter-spacing: 2px;
-  font-weight: normal;
+  font-family: 'Train One', cursive;
 }
 .title h2 {
   text-align: center;
 }
 .title h2 {
-  margin-top: 60px;
+  margin-top: 1rem;
   font-size: 2.6rem;
+  font-family: 'Patrick Hand', cursive;
+}
+
+.title-header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 /* upload form styles */
@@ -66,7 +80,7 @@ body {
   margin: 2rem 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 2rem;
+  grid-gap: 1.5rem;
 }
 
 .image-wrap {
@@ -89,7 +103,7 @@ body {
   cursor: pointer;
 }
 
-.image-icons{
+.image-icons {
   display: flex;
   justify-content: space-evenly;
   margin-top: 0.3rem;
