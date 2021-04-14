@@ -25,7 +25,7 @@ function useStorage(file) {
         let url = await storageRef.getDownloadURL();
         seturl(url);
         let createdAt = timestamp();
-        dbRef.add({ url, createdAt });
+        dbRef.add({ url, createdAt, isFav: false });
       }
     );
   }, [file]);
