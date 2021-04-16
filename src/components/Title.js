@@ -18,7 +18,6 @@ const Title = ({ checked, setchecked }) => {
       <div className="title-header">
         <h2>Your {checked ? "favourites" : "gallery"}</h2>
         <FormControlLabel
-          className="switch"
           control={
             <Switch
               checked={checked}

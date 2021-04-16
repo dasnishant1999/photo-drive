@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Train+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Train+One&display=swap');
-
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Train+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Train+One&display=swap");
 
 :root {
   --primary: #a78bfa;
@@ -25,7 +23,7 @@ body {
   color: var(--primary);
   font-size: 2.2rem;
   letter-spacing: 2px;
-  font-family: 'Train One', cursive;
+  font-family: "Train One", cursive;
 }
 .title h2 {
   text-align: center;
@@ -33,7 +31,7 @@ body {
 .title h2 {
   margin-top: 1rem;
   font-size: 2.6rem;
-  font-family: 'Patrick Hand', cursive;
+  font-family: "Patrick Hand", cursive;
 }
 
 .title-header {
@@ -80,7 +78,16 @@ body {
   margin: 2rem 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 1.5rem;
+  grid-gap: 1rem;
+}
+
+@media (max-width: 500px) {
+  .image-grid {
+    margin: 2rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+  }
 }
 
 .image-wrap {
@@ -130,4 +137,16 @@ body {
   margin: 3rem auto;
   border: 2px solid white;
   box-shadow: 5px 7px 10px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 500px) {
+  .back-drop img {
+    display: block;
+    max-width: 90%;
+    max-height: 80%;
+    object-fit: contain;
+    margin: 10% auto;
+    border: 2px solid white;
+    box-shadow: 5px 7px 10px rgba(0, 0, 0, 0.5);
+  }
 }

@@ -12,7 +12,7 @@ function App() {
   const [checked, setchecked] = useState(false);
   const docs = useFirestore("images");
   const favourites = docs.filter((doc) => doc.isFav);
-  console.log(docs,favourites);
+  // console.log(docs,favourites);
 
   return (
     <div className="app">
