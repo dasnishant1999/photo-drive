@@ -15,6 +15,8 @@ function App() {
   const favourites = docs.filter((doc) => doc.isFav);
   // console.log(docs,favourites);
 
+  console.log('testing netlify deploy from favourite branch to master')
+
   return (
     <ThemeContextProvider>
       <div className="app">
