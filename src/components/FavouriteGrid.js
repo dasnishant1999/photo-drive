@@ -1,35 +1,33 @@
 import React from "react";
 import { motion } from "framer-motion";
-import ImageIcons from "./ImageIcons";
 
-function ImageGrid({ setselectedImage ,docs}) {
-  // const docs = useFirestore("images");
-  console.log(docs);
+function FavouriteGrid({ setselectedImage, favourites }) {
+  //   const docs = useFirestore("favourites");
+  console.log(favourites);
 
   return (
     <div className="image-grid">
-      {docs &&
-        docs.map((doc) => (
-          <motion.div className="image-section" key={doc.id}>
+      {favourites &&
+        favourites.map((favourite) => (
+          <motion.div className="image-section" key={favourite.id}>
             <motion.div
               className="image-wrap"
-              onClick={() => setselectedImage(doc.url)}
+              onClick={() => setselectedImage(favourite.url)}
               whileHover={{ opacity: 1 }}
               layout
             >
               <motion.img
-                src={doc.url}
+                src={favourite.url}
                 alt="image"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1 }}
               />
             </motion.div>
-            <ImageIcons doc={doc} />
           </motion.div>
         ))}
     </div>
   );
 }
 
-export default ImageGrid;
+export default FavouriteGrid;
