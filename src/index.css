@@ -2,10 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Train+One&display=swap");
 
 :root {
-  --primary: #a78bfa;
+  --primary: #8B5CF6;
   --secondary: #c4b5fd;
-
-  --header: #4e4e4e;
+  --header: #ddd;
   --error: #ff4a4a;
 }
 
@@ -17,6 +16,19 @@ body::-webkit-scrollbar {
 body {
   font-family: "Noto Serif";
   color: var(--header);
+  background-color: #333;
+  transition: background-color 0.4s;
+}
+
+.title > .header {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.theme-icon {
+  font-size: 1.7rem !important;
+  margin: auto 0;
 }
 
 .title h1 {
@@ -52,7 +64,7 @@ body {
   text-align: center;
   width: 150px;
   height: 30px;
-  border: 2px solid var(--secondary);
+  border: 2px solid var(--primary);
   border-radius: 0.4rem;
   margin: 1rem auto;
   line-height: 30px;
@@ -63,7 +75,7 @@ body {
 }
 
 .upload-file-label:hover {
-  background-color: var(--secondary);
+  background-color: var(--primary);
   color: white;
 }
 
@@ -116,7 +128,7 @@ body {
   margin-top: 0.3rem;
   padding: 0.5rem 0;
   border-radius: 0.5rem;
-  background-color: var(--secondary);
+  background-color: var(--primary);
 }
 
 /* modal styles */

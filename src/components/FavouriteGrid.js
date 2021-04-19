@@ -1,5 +1,4 @@
 import React from "react";
-import useFirestore from "../hooks/useFirestore";
 import { motion } from "framer-motion";
 
 function FavouriteGrid({ setselectedImage, favourites }) {

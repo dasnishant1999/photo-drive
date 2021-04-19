@@ -5,6 +5,7 @@ import ImageGrid from "./components/ImageGrid";
 import Modal from "./components/Modal";
 import Title from "./components/Title";
 import UploadForm from "./components/UploadForm";
+import ThemeContextProvider from "./contexts/ThemeContext";
 import useFirestore from "./hooks/useFirestore";
 
 function App() {
@@ -15,25 +16,27 @@ function App() {
   // console.log(docs,favourites);
 
   return (
-    <div className="app">
-      <Title checked={checked} setchecked={setchecked} />
-      {!checked && <UploadForm />}
-      {!checked && (
-        <ImageGrid setselectedImage={setselectedImage} docs={docs} />
-      )}
-      {checked && (
-        <FavouriteGrid
-          setselectedImage={setselectedImage}
-          favourites={favourites}
-        />
-      )}
-      {selectedImage && (
-        <Modal
-          selectedImage={selectedImage}
-          setselectedImage={setselectedImage}
-        />
-      )}
-    </div>
+    <ThemeContextProvider>
+      <div className="app">
+        <Title checked={checked} setchecked={setchecked} />
+        {!checked && <UploadForm />}
+        {!checked && (
+          <ImageGrid setselectedImage={setselectedImage} docs={docs} />
+        )}
+        {checked && (
+          <FavouriteGrid
+            setselectedImage={setselectedImage}
+            favourites={favourites}
+          />
+        )}
+        {selectedImage && (
+          <Modal
+            selectedImage={selectedImage}
+            setselectedImage={setselectedImage}
+          />
+        )}
+      </div>
+    </ThemeContextProvider>
   );
 }
 
