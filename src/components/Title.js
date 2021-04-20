@@ -1,20 +1,10 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Switch from "@material-ui/core/Switch";
 import WbSunnyIcon from "@material-ui/icons/WbSunny";
 import Brightness2Icon from "@material-ui/icons/Brightness2";
 
-const Title = ({ checked, setchecked }) => {
-  const handleChange = (event) => {
-    if (checked) {
-      setchecked(false);
-    } else {
-      setchecked(true);
-    }
-  };
-
+const Title = ({ tabs, settabs }) => {
   const { isLightTheme, changeTheme } = useContext(ThemeContext);
 
   return (
@@ -29,18 +19,14 @@ const Title = ({ checked, setchecked }) => {
         )}
       </div>
       <div className="title-header">
-        <h2>Your {checked ? "favourites" : "gallery"}</h2>
-        <FormControlLabel
-          control={
-            <Switch
-              checked={checked}
-              onChange={handleChange}
-              name="favourites"
-              color="primary"
-            />
-          }
-          label="Favourites"
-        />
+        <h2>
+          Your {tabs === 1 ? "gallery" : tabs === 2 ? "favourites" : "bin"}
+        </h2>
+        <div className="tabs">
+          <button className='btn-tab' onClick={() => settabs(1)}>Photos</button>
+          <button className='btn-tab' onClick={() => settabs(2)}>Favourites</button>
+          <button className='btn-tab' onClick={() => settabs(3)}>Bin</button>
+        </div>
       </div>
     </div>
   );
