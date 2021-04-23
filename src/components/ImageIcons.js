@@ -1,5 +1,6 @@
 import React from "react";
 import { deleteHandler, favouriteHandler, moveToBin } from "../hooks/utils";
+import { useAuth } from "../contexts/AuthContext";
 
 import { motion } from "framer-motion";
 import DeleteRoundedIcon from "@material-ui/icons/DeleteRounded";
@@ -14,11 +15,11 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 
 function ImageIcons({ doc }) {
   const [open, setOpen] = React.useState(false);
+  const { currentUser } = useAuth();
 
   // var afterSlash = doc.url.split('/')[7];
   // var filename=afterSlash.split('?')[0];
   // console.log(filename)
-
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -36,12 +37,14 @@ function ImageIcons({ doc }) {
         transition={{ delay: 1 }}
       >
         {!doc.isFav && (
-          <StarBorderRoundedIcon onClick={() => favouriteHandler(doc)} />
+          <StarBorderRoundedIcon
+            onClick={() => favouriteHandler(currentUser.uid, doc)}
+          />
         )}
         {doc.isFav && (
           <StarRoundedIcon
             htmlColor="#F59E0B"
-            onClick={() => favouriteHandler(doc)}
+            onClick={() => favouriteHandler(currentUser.uid, doc)}
           />
         )}
         <DeleteRoundedIcon onClick={handleClickOpen} />
@@ -54,10 +57,13 @@ function ImageIcons({ doc }) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <button id="btn-bin" onClick={() => moveToBin(doc)}>
+          <button id="btn-bin" onClick={() => moveToBin(currentUser.uid, doc)}>
             Move to bin
           </button>
-          <button id="btn-delete" onClick={() => deleteHandler(doc)}>
+          <button
+            id="btn-delete"
+            onClick={() => deleteHandler(currentUser.uid, doc)}
+          >
             Delete
           </button>
         </DialogActions>

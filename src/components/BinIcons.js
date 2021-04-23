@@ -1,5 +1,6 @@
 import React from "react";
 import { deletePermanent, restoreFromBin } from "../hooks/utils";
+import { useAuth } from "../contexts/AuthContext";
 
 import { motion } from "framer-motion";
 import DeleteForeverRoundedIcon from "@material-ui/icons/DeleteForeverRounded";
@@ -11,6 +12,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 
 function BinIcons({ bin }) {
   const [open, setOpen] = React.useState(false);
+  const { currentUser } = useAuth();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -27,7 +29,9 @@ function BinIcons({ bin }) {
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
       >
-        <RestoreRoundedIcon onClick={()=>restoreFromBin(bin)} />
+        <RestoreRoundedIcon
+          onClick={() => restoreFromBin(currentUser.uid, bin)}
+        />
         <DeleteForeverRoundedIcon onClick={handleClickOpen} />
       </motion.div>
       <Dialog open={open} onClose={handleClose}>
@@ -37,7 +41,10 @@ function BinIcons({ bin }) {
           <button id="btn-bin" onClick={() => handleClose()}>
             No
           </button>
-          <button id="btn-delete" onClick={() => deletePermanent(bin)}>
+          <button
+            id="btn-delete"
+            onClick={() => deletePermanent(currentUser.uid, bin)}
+          >
             Yes
           </button>
         </DialogActions>

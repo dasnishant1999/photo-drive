@@ -1,4 +1,7 @@
 import { db, photoStorage } from "../firebase/config";
+import { useAuth } from "../contexts/AuthContext";
+
+// const { currentUser } = useAuth();
 
 function delteFromStorage(filename) {
   var ref = photoStorage.ref(filename);
@@ -12,36 +15,42 @@ function delteFromStorage(filename) {
     });
 }
 
-function deleteHandler({ id, url }) {
+function deleteHandler(uid, { id, url }) {
   var filename = url.split("/")[7].split("?")[0];
   delteFromStorage(filename);
-  db.collection("images").doc(id).delete();
+  db.collection("users").doc(uid).collection("images").doc(id).delete();
 }
 
-function deletePermanent({ id, url }) {
+function deletePermanent(uid, { id, url }) {
   var filename = url.split("/")[7].split("?")[0];
   delteFromStorage(filename);
-  db.collection("bin").doc(id).delete();
+  db.collection("users").doc(uid).collection("bin").doc(id).delete();
 }
 
-function favouriteHandler({ id, isFav }) {
-  if (!isFav) {
-    db.collection("images").doc(id).update({ isFav: !isFav });
-    // db.collection("favourites").doc(id).set({ url, createdAt });
-  } else {
-    db.collection("images").doc(id).update({ isFav: !isFav });
-    // db.collection("favourites").doc(id).delete();
-  }
+function favouriteHandler(uid, { id, isFav }) {
+  db.collection("users")
+    .doc(uid)
+    .collection("images")
+    .doc(id)
+    .update({ isFav: !isFav });
 }
 
-function moveToBin({ id, createdAt, url }) {
-  db.collection("bin").doc(id).set({ url, createdAt });
-  db.collection("images").doc(id).delete();
+function moveToBin(uid, { id, createdAt, url }) {
+  db.collection("users")
+    .doc(uid)
+    .collection("bin")
+    .doc(id)
+    .set({ url, createdAt });
+  db.collection("users").doc(uid).collection("images").doc(id).delete();
 }
 
-function restoreFromBin({ id, createdAt, url }) {
-  db.collection("images").doc(id).set({ url, createdAt, isFav: false });
-  db.collection("bin").doc(id).delete();
+function restoreFromBin(uid, { id, createdAt, url }) {
+  db.collection("users")
+    .doc(uid)
+    .collection("images")
+    .doc(id)
+    .set({ url, createdAt, isFav: false });
+  db.collection("users").doc(uid).collection("bin").doc(id).delete();
 }
 
 export {

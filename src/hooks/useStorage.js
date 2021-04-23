@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { photoStorage, db, timestamp } from "../firebase/config";
+import { useAuth } from "../contexts/AuthContext";
 
 function useStorage(file) {
   const [progress, setprogress] = useState(0);
   const [error, seterror] = useState(null);
   const [url, seturl] = useState(null);
+  const { currentUser } = useAuth();
 
   useEffect(() => {
     const storageRef = photoStorage.ref(file.name);
-    const dbRef = db.collection("images");
+    const dbRef = db.collection("users");
 
     storageRef.put(file).on(
       "state_changed",
@@ -25,7 +27,10 @@ function useStorage(file) {
         let url = await storageRef.getDownloadURL();
         seturl(url);
         let createdAt = timestamp();
-        dbRef.add({ url, createdAt, isFav: false });
+        dbRef
+          .doc(currentUser.uid)
+          .collection("images")
+          .add({ url, createdAt, isFav: false });
       }
     );
   }, [file]);

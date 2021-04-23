@@ -4,7 +4,7 @@ import useBin from "../hooks/useBin";
 import BinIcons from "./BinIcons";
 
 function BinGrid({ setselectedImage }) {
-  const bin = useBin("bin");
+  const bin = useBin("users");
 
   return (
     <div className="image-grid">

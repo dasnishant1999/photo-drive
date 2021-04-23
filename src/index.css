@@ -57,6 +57,27 @@ button:focus {
   flex-direction: column;
 }
 
+.header-right {
+  margin: auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-logout {
+  width: 50px;
+  height: 50px;
+  margin-left: 1rem;
+  background-color: #8b5cf6;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+  outline: none;
+}
+
 .tabs {
   width: 40%;
   display: flex;
