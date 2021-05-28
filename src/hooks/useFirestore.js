@@ -24,7 +24,7 @@ function useFirestore(collection) {
     return () => {
       unsub();
     };
-  }, [collection]);
+  }, [collection, currentUser]);
 
   return docs;
 }

@@ -2,8 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 
 function FavouriteGrid({ setselectedImage, favourites }) {
-  //   const docs = useFirestore("favourites");
-  console.log(favourites);
 
   return (
     <div className="image-grid">

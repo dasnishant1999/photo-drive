@@ -33,8 +33,6 @@ const Title = ({ tabs, settabs }) => {
     }
   }
 
-  console.log(currentUser.email);
-
   return (
     <div className="title">
       <Dialog open={open} onClose={handleClose}>

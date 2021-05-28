@@ -3,9 +3,6 @@ import { motion } from "framer-motion";
 import ImageIcons from "./ImageIcons";
 
 function ImageGrid({ setselectedImage, docs }) {
-  // const docs = useFirestore("images");
-  console.log(docs);
-
   return (
     <div className="image-grid">
       {docs &&

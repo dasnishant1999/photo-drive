@@ -33,7 +33,7 @@ function useStorage(file) {
           .add({ url, createdAt, isFav: false });
       }
     );
-  }, [file]);
+  }, [file, currentUser]);
 
   return { progress, error, url };
 }

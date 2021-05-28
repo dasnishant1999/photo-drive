@@ -1,9 +1,6 @@
 import { db, photoStorage } from "../firebase/config";
-import { useAuth } from "../contexts/AuthContext";
 
-// const { currentUser } = useAuth();
-
-function delteFromStorage(filename) {
+function deleteFromStorage(filename) {
   var ref = photoStorage.ref(filename);
   ref
     .delete()
@@ -17,13 +14,13 @@ function delteFromStorage(filename) {
 
 function deleteHandler(uid, { id, url }) {
   var filename = url.split("/")[7].split("?")[0];
-  delteFromStorage(filename);
+  deleteFromStorage(filename);
   db.collection("users").doc(uid).collection("images").doc(id).delete();
 }
 
 function deletePermanent(uid, { id, url }) {
   var filename = url.split("/")[7].split("?")[0];
-  delteFromStorage(filename);
+  deleteFromStorage(filename);
   db.collection("users").doc(uid).collection("bin").doc(id).delete();
 }
 

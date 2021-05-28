@@ -29,7 +29,7 @@ function useBin(collection) {
     return () => {
       unsub();
     };
-  }, [collection]);
+  }, [collection,currentUser]);
 
   return bin;
 }
