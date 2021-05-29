@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import useBin from "../hooks/useBin";
 import BinIcons from "./BinIcons";
+import { DataLayerContext } from "../contexts/DataLayerContext";
 
-function BinGrid({ setselectedImage }) {
+function BinGrid() {
   const bin = useBin("users");
+
+  const { setselectedImage } = useContext(DataLayerContext);
 
   return (
     <div className="image-grid">

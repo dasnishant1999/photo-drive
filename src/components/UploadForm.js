@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { DataLayerContext } from "../contexts/DataLayerContext";
 import ProgressBar from "./ProgressBar";
 
 function UploadForm() {
-  const [file, setfile] = useState(null);
-  const [error, seterror] = useState(null);
+  const { error, seterror, file, setfile } = useContext(DataLayerContext);
 
   const types = ["image/png", "image/jpeg", "image/gif"];
 
@@ -29,7 +29,7 @@ function UploadForm() {
       </label>
       {/* {file && <p>{file.name}</p>} */}
       {error && <p>{error}</p>}
-      {file && <ProgressBar file={file} setfile={setfile} />}
+      {file && <ProgressBar />}
     </div>
   );
 }

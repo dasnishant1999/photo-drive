@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import ImageIcons from "./ImageIcons";
+import { DataLayerContext } from "../contexts/DataLayerContext";
 
-function ImageGrid({ setselectedImage, docs }) {
+function ImageGrid({ docs }) {
+  const { setselectedImage } = useContext(DataLayerContext);
+
   return (
     <div className="image-grid">
       {docs &&

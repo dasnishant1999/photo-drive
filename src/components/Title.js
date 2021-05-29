@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { ThemeContext } from "../contexts/ThemeContext";
 import { useAuth } from "../contexts/AuthContext";
@@ -9,12 +9,15 @@ import Brightness2Icon from "@material-ui/icons/Brightness2";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import { DataLayerContext } from "../contexts/DataLayerContext";
 
-const Title = ({ tabs, settabs }) => {
+const Title = () => {
   const { isLightTheme, changeTheme } = useContext(ThemeContext);
   const { currentUser, logout } = useAuth();
   const history = useHistory();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+
+  const { tabs, settabs } = useContext(DataLayerContext);
 
   const handleClickOpen = () => {
     setOpen(true);

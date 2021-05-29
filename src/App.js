@@ -8,20 +8,21 @@ import ThemeContextProvider from "./contexts/ThemeContext";
 import SignIn from "./components/Authentication/SignIn";
 import SignUp from "./components/Authentication/SignUp";
 import PrivateRoute from "./routes/PrivateRoute";
+import DataLayerContextProvider from "./contexts/DataLayerContext";
 
 function App() {
-  // console.log(docs,favourites);
-
   return (
     <ThemeContextProvider>
       <AuthContextProvider>
-        <Router>
-          <Switch>
-            <PrivateRoute exact path="/" component={Home}></PrivateRoute>
-            <Route path="/signup" component={SignUp}></Route>
-            <Route path="/signin" component={SignIn}></Route>
-          </Switch>
-        </Router>
+        <DataLayerContextProvider>
+          <Router>
+            <Switch>
+              <PrivateRoute exact path="/" component={Home}></PrivateRoute>
+              <Route path="/signup" component={SignUp}></Route>
+              <Route path="/signin" component={SignIn}></Route>
+            </Switch>
+          </Router>
+        </DataLayerContextProvider>
       </AuthContextProvider>
     </ThemeContextProvider>
   );

@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import useStorage from "../hooks/useStorage";
 import { motion } from "framer-motion";
+import { DataLayerContext } from "../contexts/DataLayerContext";
 
-function ProgressBar({ file, setfile }) {
+function ProgressBar() {
+  const { file, setfile } = useContext(DataLayerContext);
   const { progress, url } = useStorage(file);
 
   useEffect(() => {
@@ -14,8 +16,8 @@ function ProgressBar({ file, setfile }) {
   return (
     <motion.div
       className="progress-bar"
-      initial={{width:0}}
-      animate={{width:progress+'%'}}
+      initial={{ width: 0 }}
+      animate={{ width: progress + "%" }}
     ></motion.div>
   );
 }

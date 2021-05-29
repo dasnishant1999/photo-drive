@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { deleteHandler, favouriteHandler, moveToBin } from "../hooks/utils";
 import { useAuth } from "../contexts/AuthContext";
 
@@ -14,7 +14,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
 function ImageIcons({ doc }) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const { currentUser } = useAuth();
 
   // var afterSlash = doc.url.split('/')[7];

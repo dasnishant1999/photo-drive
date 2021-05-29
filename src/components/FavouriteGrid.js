@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
+import { DataLayerContext } from "../contexts/DataLayerContext";
 
-function FavouriteGrid({ setselectedImage, favourites }) {
+function FavouriteGrid({ favourites }) {
+  const { setselectedImage } = useContext(DataLayerContext);
 
   return (
     <div className="image-grid">
